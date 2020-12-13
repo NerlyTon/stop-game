@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { ActionCableConsumer } from 'react-actioncable-provider';
 import { createPlayer } from '../redux/actions/playerActions'
 import { connect } from 'react-redux'
+
 
 class PlayerGameForm extends Component {
 
@@ -34,7 +36,9 @@ class PlayerGameForm extends Component {
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.submit}>
+                <ActionCableConsumer
+                channel={{ channel: 'PlayersChannel' }}/>
                     Initials:<input onChange={(e) => this.setState({ initials: e.target.value })} type="text" value={this.state.initials}/><br/>
                     Name:<input onChange={(e) => this.setState({ name: e.target.value })} type="text" value={this.state.name}/><br/>
                     Place:<input onChange={(e) => this.setState({ place: e.target.value })} type="text" value={this.state.place}/><br/>
