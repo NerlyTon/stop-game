@@ -15,8 +15,8 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route exact path="rules" component={Rules}/>
-          <Route exact path="scores" component={Scores}/>
+          <Route exact path="/rules" component={Rules}/>
+          <Route exact path="/scores" component={Scores}/>
         </Switch>
       </Router>
       </ActionCableProvider>
