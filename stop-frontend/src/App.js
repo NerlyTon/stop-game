@@ -6,12 +6,14 @@ import { API_WS_ROOT } from './constants';
 import Home from './components/Home'
 import Rules from './components/Rules'
 import Scores from './components/Scores'
+import Nav from './components/Nav'
 
 
 function App() {
   return (
     <div className="App">
       <ActionCableProvider url={API_WS_ROOT}>
+      <Nav/>
       <Router>
         <Switch>
           <Route exact path="/" component={Home}/>
