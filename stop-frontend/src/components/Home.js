@@ -25,6 +25,15 @@ class Home extends Component {
         console.log("handlereceived players in home", this.state)
     };
 
+    mapPlayers = (players) => {
+        return players.map(player => {
+          return (
+            <PlayerAnswers player={player}/>)
+        }
+    )}
+      
+    
+
 
 
     render() {
@@ -38,7 +47,7 @@ class Home extends Component {
                 />
                 <PlayerGameForm/>
                 <h2>Players Answers</h2>
-                <ul>{this.props.players.map(player => <PlayerAnswers player={player}/>)}</ul>
+                <ul>{this.mapPlayers(this.state.players)}</ul>
                 
             </div>
         )
