@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { createPlayer } from '../redux/actions/playerActions'
+import { connect } from 'react-redux'
 
-export default class PlayerGameForm extends Component {
+class PlayerGameForm extends Component {
 
     state = {
         initials: "",
@@ -15,6 +17,19 @@ export default class PlayerGameForm extends Component {
     //     this.setState({ initials: e.target.value });
     //     debugger
     //   };
+
+    submit = (e) => {
+        e.preventDefault();
+        this.props.createPlayer(this.state);
+        this.setState({
+            initials: "",
+            name: "",
+            place: "",
+            color: "",
+            animal: "",
+            thing: ""
+        });
+    };
     
     render() {
         return (
@@ -32,3 +47,5 @@ export default class PlayerGameForm extends Component {
         )
     }
 }
+
+export default connect(null, { createPlayer })(PlayerGameForm)
