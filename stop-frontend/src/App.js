@@ -13,8 +13,8 @@ function App() {
   return (
     <div className="App">
       <ActionCableProvider url={API_WS_ROOT}>
-      <Nav/>
       <Router>
+        <Nav/>
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route exact path="/rules" component={Rules}/>
