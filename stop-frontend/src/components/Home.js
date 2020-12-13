@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import { getPlayers } from '../redux/actions/playerActions'
 import PlayerAnswers from './PlayerAnswers'
 import { ActionCableConsumer } from 'react-actioncable-provider';
+import PlayerGameForm from './PlayerGameForm'
 
 
 class Home extends Component {
@@ -35,6 +36,7 @@ class Home extends Component {
                 channel={{ channel: 'PlayersChannel' }}
                 onReceived={this.handleReceivedPlayers}
                 />
+                <PlayerGameForm/>
                 <h2>Players Answers</h2>
                 <ul>{this.props.players.map(player => <PlayerAnswers player={player}/>)}</ul>
                 
