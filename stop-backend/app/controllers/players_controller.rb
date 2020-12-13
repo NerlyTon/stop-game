@@ -7,13 +7,14 @@ class PlayersController < ApplicationController
 
     def create
         player = Player.new(player_params)
-
+        # byebug
         if player.save
-            serialized_data = ActiveModelSerializers::Adapter::Json.new(PlayerSerializer.new(player)).serializable_hash,
+            serialized_data = ActiveModelSerializers::Adapter::Json.new(
+            PlayerSerializer.new(player)).serializable_hash
             ActionCable.server.broadcast 'players_channel', serialized_data
             head :ok
-        end
-    end
+        end 
+    end 
 
     private
 
