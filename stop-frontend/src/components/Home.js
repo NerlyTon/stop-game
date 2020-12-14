@@ -4,6 +4,7 @@ import { getPlayers } from '../redux/actions/playerActions'
 import PlayerAnswers from './PlayerAnswers'
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import PlayerGameForm from './PlayerGameForm'
+import LetterRandomizer from './LetterRandomizer';
 
 
 class Home extends Component {
@@ -28,7 +29,7 @@ class Home extends Component {
     mapPlayers = (players) => {
         return players.map(player => {
           return (
-            <PlayerAnswers player={player}/>)
+            <PlayerAnswers player={player} key={player.id}/>)
         }
     )}
       
@@ -41,6 +42,7 @@ class Home extends Component {
         return (
             <div>
                 <h1>Game</h1>
+                <LetterRandomizer/><br/><br/>
                 <ActionCableConsumer
                 channel={{ channel: 'PlayersChannel' }}
                 onReceived={this.handleReceivedPlayers}
