@@ -4,7 +4,10 @@ import { getPlayers } from '../redux/actions/playerActions'
 import PlayerAnswers from './PlayerAnswers'
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import PlayerGameForm from './PlayerGameForm'
-import LetterRandomizer from './LetterRandomizer';
+import Timer from './Timer';
+// import Timer from './Timer';
+
+
 
 
 class Home extends Component {
@@ -23,7 +26,7 @@ class Home extends Component {
         this.setState({
           players: [...this.state.players, player]
         });
-        console.log("handlereceived players in home", this.state)
+        console.log("handlereceived players in home", this.props)
     };
 
     mapPlayers = (players) => {
@@ -32,9 +35,19 @@ class Home extends Component {
             <PlayerAnswers player={player} key={player.id}/>)
         }
     )}
-      
-    
 
+    timer = () => {
+        console.log("in the timer func")
+        return <button>Start</button>
+
+    }
+      
+    handleTimer = () => {
+        console.log("in the Timer")
+        this.timer()
+        // return (
+        // <Timer/>)
+    }
 
 
     render() {
@@ -42,11 +55,13 @@ class Home extends Component {
         return (
             <div>
                 <h1>Game</h1>
-                <LetterRandomizer/><br/><br/>
+                
                 <ActionCableConsumer
                 channel={{ channel: 'PlayersChannel' }}
                 onReceived={this.handleReceivedPlayers}
+                // onInitialized={this.props.Timer}
                 />
+                {/* <button>Start Game</button> */}
                 <PlayerGameForm/>
                 <h2>Players Answers</h2>
                 <ul>{this.mapPlayers(this.state.players)}</ul>
