@@ -4,7 +4,7 @@ import { getPlayers } from '../redux/actions/playerActions'
 import PlayerAnswers from './PlayerAnswers'
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import PlayerGameForm from './PlayerGameForm'
-import Timer from './Timer';
+// import Timer from './Timer';
 // import Timer from './Timer';
 
 
