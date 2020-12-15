@@ -11,6 +11,7 @@ export const getPlayers = () => {
 }
 
 export const createPlayer = (data) => {
+  console.log("inside create action")
     return (dispatch) => {
         fetch(`${API_ROOT}/players`, {
         method: "POST",
@@ -18,7 +19,9 @@ export const createPlayer = (data) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ player: data }),
+        
       })
+      
         // .then((res) => res.json())
         // .then((player) =>
         //   dispatch({ type: "CREATE_PLAYER_SUCCESS", payload: player })
