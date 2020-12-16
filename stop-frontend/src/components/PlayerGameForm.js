@@ -2,10 +2,25 @@ import React, { Component } from 'react'
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import { createPlayer } from '../redux/actions/playerActions'
 import { connect } from 'react-redux'
+// import LetterRandomizer from './LetterRandomizer';
+// import Timer from './Timer';
 
 
 class PlayerGameForm extends Component {
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+    //         initials: "",
+    //         name: "",
+    //         place: "",
+    //         color: "",
+    //         animal: "",
+    //         thing: ""
+    //     }
 
+    //     // this.handleStopTimer = this.handleStopTimer.bind(this)
+    // }
+    
     state = {
         initials: "",
         name: "",
@@ -13,15 +28,11 @@ class PlayerGameForm extends Component {
         color: "",
         animal: "",
         thing: ""
-    }
-
-    // handleChange = e => {
-    //     this.setState({ initials: e.target.value });
-    //     debugger
-    //   };
-
+            }
+  
     submit = (e) => {
         e.preventDefault();
+        this.props.sendFuntion(e)
         this.props.createPlayer(this.state);
         this.setState({
             initials: "",
@@ -32,10 +43,16 @@ class PlayerGameForm extends Component {
             thing: ""
         });
     };
+
+    // stop = (e) => {
+    //     e.preventDefault()
+    //     clearInterval(handleStartTimer)
+    // }
     
     render() {
         return (
             <div>
+                
                 <form onSubmit={this.submit}>
                 <ActionCableConsumer
                 channel={{ channel: 'PlayersChannel' }}/>
