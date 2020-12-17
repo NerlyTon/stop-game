@@ -44,10 +44,15 @@ class PlayerGameForm extends Component {
         });
     };
 
-    // stop = (e) => {
-    //     e.preventDefault()
-    //     clearInterval(handleStartTimer)
-    // }
+    handleReceivedPlayers = (player)=> {
+        this.props.allPlayers(props => {
+            return {
+              player
+            };
+          });
+        
+       
+    };
     
     render() {
         return (
@@ -69,4 +74,9 @@ class PlayerGameForm extends Component {
     }
 }
 
-export default connect(null, { createPlayer })(PlayerGameForm)
+const mapStateToProps = (state) => {
+    return {allPlayers: state.allPlayers}
+}
+
+
+export default connect(mapStateToProps, { createPlayer })(PlayerGameForm)
