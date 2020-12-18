@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { ActionCableConsumer } from 'react-actioncable-provider';
+import PlayerGameForm from './PlayerGameForm';
+
 
 
 export default class LetterRandomizer extends Component {
@@ -79,6 +81,7 @@ export default class LetterRandomizer extends Component {
             {/* <form onSubmit={this.addtoState}>
             <input type="submit" value="NEW LETTER"/>
             </form> */}
+            <PlayerGameForm sendFuntion = {this.randomLetter}/>
             </div>
         )
     }
