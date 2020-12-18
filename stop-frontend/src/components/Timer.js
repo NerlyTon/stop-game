@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import LetterRandomizer from './LetterRandomizer';
 // import PlayerAnswers from './PlayerAnswers';
-import PlayerGameForm from './PlayerGameForm';
-import Game from './Game'
+// import PlayerGameForm from './PlayerGameForm';
+// import Game from './Game'
 import {connect} from 'react-redux'
-import { sendTime } from '../redux/actions/playerActions'
+import { sendTime, setTime } from '../redux/actions/playerActions'
 
 class Timer extends Component {
     // constructor(props) {
@@ -41,8 +41,12 @@ class Timer extends Component {
              if(this.state.timerStarted) {
                  if(this.state.seconds >= 60) {
                     this.setState((prevState) => ({ minutes: prevState.minutes + 1, seconds: 0}))
+                 }
+                 if(this.state.minutes === 2){
+                    clearInterval(this.intervalID)
                  } 
                  this.setState((prevState) => ({ seconds: prevState.seconds + 1 }))
+                 
              }
          
         }, 1000)
@@ -58,8 +62,16 @@ class Timer extends Component {
         console.log("stopping timer")
         this.setState({timerStarted: false, timerStopped: true})
         clearInterval(this.intervalID)
-        this.props.sendTime({currentTime: this.state.minutes + ":" + this.state.seconds})
+        this.props.fromParent({currentTime: this.state.minutes + ":" + this.state.seconds})
         // {this.state.minutes + ":" + this.state.seconds}
+        // this.setState({
+        // timerStarted: false,
+        // timerStopped: true,
+        // minutes: 0,
+        // seconds: 0,
+        // currentTime: 0,
+        // })
+        this.handleStartTimer()
     }
 
     render() {
@@ -75,7 +87,7 @@ class Timer extends Component {
                 />
                 Timer: {this.state.minutes + ":" + this.state.seconds}<br/>
                 {/* <button onClick={this.handleStartTimer}>Start Game</button> */}
-                <PlayerGameForm sendFuntion = {this.handleStopTimer}/>
+                {/* <PlayerGameForm sendFuntion = {this.handleStopTimer}/> */}
                 <h6>{this.state.currentTime}</h6>
                 
             </div>
@@ -85,4 +97,4 @@ class Timer extends Component {
 
 
 
-export default connect(null, { sendTime })(Timer)
+export default connect(null, { sendTime, setTime })(Timer)
