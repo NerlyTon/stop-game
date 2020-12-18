@@ -42,13 +42,27 @@ export const getPlayers = () => {
         body: JSON.stringify({ player: data })
       })
         .then((res) => res.json())
-        .then((player) =>
-          dispatch({ type: "CREATE_PLAYER_SUCCESS", payload: player })
-        )
+        .then((player) => {
+        // debugger
+          dispatch({ type: "CREATE_PLAYER_SUCCESS", payload: player.player })
+        })
         .catch((error) => console.log(error))
         
     };
   };
+
+  export const deletePlayer = (playerId) => {
+    console.log("inside delete action")
+    return (dispatch) => {
+      fetch(`http://localhost:3000/players/${playerId}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((id) => console.log(id))
+        .catch((error) => console.log(error))
+        
+    };
+  }
 
   export const sendTime = (time) => {
     return dispatch => {
@@ -57,9 +71,18 @@ export const getPlayers = () => {
     }
   }
 
-  // export const player = (player) => {
-  //   return dispatch => {
-  //     // debugger
-  //     dispatch({ type: "PLAYER_INFO", payload: player })
-  //   }
-  // }
+  export const playerAns = (player) => {
+    return dispatch => {
+      // debugger
+      dispatch({ type: "PLAYER_ANS", payload: player })
+    }
+  }
+
+  export const setTime = (time) => {
+    return dispatch => {
+      // debugger
+      dispatch({ type: "SET_TIME", payload: time })
+    }
+  }
+
+  // dispatch({ type: "DELETE_PLAYER_SUCCESS", payload: id }))
