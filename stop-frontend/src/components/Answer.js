@@ -16,7 +16,7 @@ class Answer extends Component {
         return (
             <div>
                 <h1>Answer</h1>
-                {/* {player.intiials} */}
+              
                 {this.props.player.initials} - {this.props.player.name} - {this.props.player.place} - {this.props.player.color} - {this.props.player.animal} - {this.props.player.thing}
             </div>
         )

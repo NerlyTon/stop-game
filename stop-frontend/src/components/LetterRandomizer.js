@@ -24,7 +24,25 @@ export default class LetterRandomizer extends Component {
     }
         
         
-        // e.preventDefault()
+   
+
+    render() {
+        return (
+            <div>
+                <ActionCableConsumer
+                channel={{ channel: 'PlayersChannel' }}
+                onConnected={this.randomLetter}
+                />
+                Letter: {this.state.selectedLetter}<br/>
+            
+            <PlayerGameForm sendFuntion = {this.randomLetter}/>
+            </div>
+        )
+    }
+}
+
+
+     // e.preventDefault()
     //     let letter
     //   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   
@@ -69,21 +87,3 @@ export default class LetterRandomizer extends Component {
     // oneLetter = () => {
     //     return this.handleLetter()
     // }
-
-    render() {
-        return (
-            <div>
-                <ActionCableConsumer
-                channel={{ channel: 'PlayersChannel' }}
-                onConnected={this.randomLetter}
-                />
-                Letter: {this.state.selectedLetter}<br/>
-            {/* <form onSubmit={this.addtoState}>
-            <input type="submit" value="NEW LETTER"/>
-            </form> */}
-            <PlayerGameForm sendFuntion = {this.randomLetter}/>
-            </div>
-        )
-    }
-}
-
