@@ -6,6 +6,8 @@ import Rules from './components/Rules'
 import Answer from './components/Answer';
 import history from './history'
 import Header from './components/Header';
+import Footer from './components/Footer';
+import 'animate.css'
 
 
 
@@ -22,6 +24,7 @@ function App() {
           <Route exact path="/rules" component={Rules}/>
           <Route path="/answer/:id" component={Answer}/>
         </Switch>
+        <br/><br/><br/><br/><br/><br/><Footer/>
       </Router>
       {/* </ActionCableProvider> */}
     </div>
