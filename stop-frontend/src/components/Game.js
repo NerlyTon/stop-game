@@ -4,6 +4,7 @@ import { playerAns } from '../redux/actions/playerActions'
 import PlayerAnswers from './PlayerAnswers'
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import Timer from './Timer';
+import Scores from './Scores';
 
 
 
@@ -11,11 +12,10 @@ class Game extends Component {
     
     state = {
         players: [],
-        currentTime: 0,
       };
 
 
-    handleReceivedPlayers = (players)=> {
+        handleReceivedPlayers = (players)=> {
         // debugger
         // console.log("here", players)
         const player = players.player
@@ -25,13 +25,13 @@ class Game extends Component {
         
        };
 
-       infoFromChild = (info) => {
-        this.setState({
-        currentTime: info.currentTime,
-        })
-        // debugger
-        console.log(this.state.currentTime)
-       }
+    //    infoFromChild = (info) => {
+    //     this.setState({
+    //     currentTime: info.currentTime,
+    //     })
+    //     // debugger
+    //     console.log(this.state.currentTime)
+    //    }
     
       
 
@@ -47,17 +47,15 @@ class Game extends Component {
                 channel={{ channel: 'PlayersChannel' }}
                 onReceived={this.handleReceivedPlayers}
                 />
-           
-                
-                <Timer fromParent={this.infoFromChild}/>
-               
+                <Timer/><br/><br/>
                 <h2>Players Answers</h2>
              
             
                 {this.props.playerA.map((player) => {
                return <PlayerAnswers player={player} key={player.id} state={this.state.info}/>
                 })}
-
+                
+                <Scores/>
                 
                 
             </div>
