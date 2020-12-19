@@ -6,6 +6,7 @@ class PlayersController < ApplicationController
     end
 
     def show
+        # byebug
         player = Player.find(params[:id])
         render json: player
     end
@@ -42,8 +43,9 @@ class PlayersController < ApplicationController
     end 
 
     def destroy
-        byebug
+        # byebug
         player = Player.find(params[:id])
+       
         if player.destroy
             render json: {id: player.id}
         end
