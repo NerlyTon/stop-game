@@ -1,14 +1,12 @@
 import React from 'react';
 import './App.css';
 import { Router, Route, Switch } from 'react-router-dom'
-// import { ActionCableProvider } from 'react-actioncable-provider';
-// import { API_WS_ROOT } from './constants';
 import Game from './components/Game'
 import Rules from './components/Rules'
-// import Scores from './components/Scores'
 import Nav from './components/Nav'
 import Answer from './components/Answer';
 import history from './history'
+
 
 
 
