@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import { playerAns } from '../redux/actions/playerActions'
+import { playerAns, deletePlayer } from '../redux/actions/playerActions'
 import PlayerAnswers from './PlayerAnswers'
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import Timer from './Timer';
-import Scores from './Scores';
 
 
 
@@ -33,6 +32,10 @@ class Game extends Component {
     //     console.log(this.state.currentTime)
     //    }
     
+    deleteP = (playerId) => {
+        console.log("delete")
+        this.props.deletePlayer(playerId)
+    }
       
 
 
@@ -41,6 +44,7 @@ class Game extends Component {
 
         console.log(this.state, "state")
         console.log(this.props.playerA, "redux")
+        // let playerId = 
         return (
             <div>
                 <ActionCableConsumer
@@ -52,10 +56,10 @@ class Game extends Component {
              
             
                 {this.props.playerA.map((player) => {
-               return <PlayerAnswers player={player} key={player.id} state={this.state.info}/>
+               return <PlayerAnswers player={player} key={player.id} sendFunc={this.deleteP}/>
                 })}
                 
-                <Scores/>
+                
                 
                 
             </div>
@@ -70,7 +74,7 @@ const mapStateToProps = (players) => {
     }
 }
 
-export default connect(mapStateToProps, { playerAns })(Game)
+export default connect(mapStateToProps, { playerAns, deletePlayer })(Game)
 
 
             // e.preventDefault()
