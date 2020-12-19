@@ -3,37 +3,23 @@ import {connect} from 'react-redux'
 import { playerAns } from '../redux/actions/playerActions'
 import PlayerAnswers from './PlayerAnswers'
 import { ActionCableConsumer } from 'react-actioncable-provider';
-
 import Timer from './Timer';
 import Scores from './Scores';
-
-
-
 
 
 class Game extends Component {
     
     state = {
         players: [],
-        timerStarted: false,
-        timerStopped: true,
-        minutes: 0,
-        seconds: 0,
         currentTime: 0,
       };
 
-
-    // componentDidMount() {
-    //     this.props.getPlayer()
-    // }
 
     handleReceivedPlayers = (players)=> {
         // debugger
         // console.log("here", players)
         const player = players.player
-        // this.setState({
-        //     players: [...this.state.players, player]
-        // })
+       
         this.props.playerAns(player)
         console.log("inside the handle", players)
         
@@ -41,10 +27,6 @@ class Game extends Component {
 
        infoFromChild = (info) => {
         this.setState({
-        // timerStarted: info.timerStarted,
-        // timerStopped: info.timerStopped,
-        // minutes: info.minutes,
-        // seconds: info.seconds,
         currentTime: info.currentTime,
         })
         // debugger
@@ -52,14 +34,7 @@ class Game extends Component {
        }
     
       
-    handleTimer = () => {
-        // App.cable.subscriptions.subscriptions.receive( { data })
-        // debugger
-        console.log("Timer")
-        // this.timer()
-        // return (
-        // <Timer/>)
-    }
+
 
 
     render() {
@@ -68,20 +43,16 @@ class Game extends Component {
         console.log(this.props.playerA, "redux")
         return (
             <div>
-                <h1>Word Combat</h1>
-                <h4>Also knows as "STOP paper game"</h4><br/><br/>
-                
                 <ActionCableConsumer
                 channel={{ channel: 'PlayersChannel' }}
                 onReceived={this.handleReceivedPlayers}
-                // onConnected={this.handleTimer}
                 />
-                {/* <button>Start Game</button> */}
+           
                 
                 <Timer fromParent={this.infoFromChild}/>
-                {/* <PlayerGameForm/> */}
+               
                 <h2>Players Answers</h2>
-                {/* {this.checkingToggle()} */}
+             
             
                 {this.props.playerA.map((player) => {
                return <PlayerAnswers player={player} key={player.id} state={this.state.info}/>
@@ -97,7 +68,7 @@ class Game extends Component {
 const mapStateToProps = (players) => {
     console.log("inside map", players)
     return {
-        players: players.allPlayers, playerA: players.playerAns
+        playerA: players.playerAns
     }
 }
 
