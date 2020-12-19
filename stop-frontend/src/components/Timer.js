@@ -28,7 +28,7 @@ class Timer extends Component {
                  }
                  if(this.state.minutes === 2){
                     clearInterval(this.intervalID)
-
+                    this.props.sendTime({currentTime: this.state.minutes})
                  } 
                  this.setState((prevState) => ({ seconds: prevState.seconds + 1 }))
                  
@@ -62,7 +62,7 @@ class Timer extends Component {
                 onConnected={this.handleStartTimer}
                 />
                 Timer: {this.state.minutes + ":" + this.state.seconds}<br/>
-                <h6>{this.state.currentTime}</h6>
+                
                 
             </div>
         )
