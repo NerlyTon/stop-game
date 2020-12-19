@@ -4,7 +4,7 @@ import { playerAns } from '../redux/actions/playerActions'
 import PlayerAnswers from './PlayerAnswers'
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import Timer from './Timer';
-import Scores from './Scores';
+
 
 
 class Game extends Component {
@@ -58,7 +58,7 @@ class Game extends Component {
                return <PlayerAnswers player={player} key={player.id} state={this.state.info}/>
                 })}
 
-                <Scores/>
+                
                 
             </div>
         )

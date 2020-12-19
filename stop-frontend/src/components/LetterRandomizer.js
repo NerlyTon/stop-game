@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import PlayerGameForm from './PlayerGameForm';
+import {connect} from 'react-redux'
+import Scores from './Scores';
 
 
 
-export default class LetterRandomizer extends Component {
+class LetterRandomizer extends Component {
     
 
     state = {
@@ -22,6 +24,16 @@ export default class LetterRandomizer extends Component {
         })
 
     }
+
+    display = (string) => {
+        if(string === "hide") {
+           return <Scores/>
+        } 
+        else if (string === "show") {
+            return <PlayerGameForm sendFuntion = {this.randomLetter}/>
+        }
+        
+    }
         
         
    
@@ -34,12 +46,17 @@ export default class LetterRandomizer extends Component {
                 onConnected={this.randomLetter}
                 />
                 Letter: {this.state.selectedLetter}<br/>
-            
-            <PlayerGameForm sendFuntion = {this.randomLetter}/>
+                <PlayerGameForm sendFuntion = {this.randomLetter}/>
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {time: state.time}
+}
+
+export default connect(mapStateToProps)(LetterRandomizer)
 
 
      // e.preventDefault()
