@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { playerAns } from '../redux/actions/playerActions'
 import {connect} from 'react-redux'
+// import PlayerGameForm from './PlayerGameForm';
 
 
 class Scores extends Component {
@@ -8,26 +9,28 @@ class Scores extends Component {
         score: 0
     }
 
-    // mapOverPlayers = () => {
-    //    return this.props.playerA.map(player => {
-    //         console.log("inside of scores", player)
-    //         if(player.initials === player.initials) {
-    //             this.setState({score: +1})
-    //             return this.state.score
-    //         }
-    //     })
-    // }
+    mapOverPlayers = () => {
+       this.props.playerA.map(player => {
+            console.log("inside of scores", player)
+            return player.initials !== "" ? this.setState((prevState) => ({ score: prevState.score + 1 })) : null
+                  
+        })
+        console.log(this.state.score)
+    }
 
 
     render() {
+        
+        // <PlayerGameForm sendAnotherFuntion = {this.mapOverPlayers}/>
         return (
             <div>
                 <h1>Scores</h1>
+                <h5>{this.state.score}</h5>
                 {/* {this.mapOverPlayers()} */}
                 {/* {this.props.playerA.map((player) => {
-                    // console.log("inside score", player)
+                    // return console.log("inside score", player)
                     // debugger
-               return <ul><li key={player.id}>{player.intitials}</li></ul>
+            //    return <ul><li key={player.id}>{player.intitials}</li></ul>
                 })} */}
             </div>
         )
