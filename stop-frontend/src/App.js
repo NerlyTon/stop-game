@@ -3,9 +3,9 @@ import './App.css';
 import { Router, Route, Switch } from 'react-router-dom'
 import Game from './components/Game'
 import Rules from './components/Rules'
-import Nav from './components/Nav'
 import Answer from './components/Answer';
 import history from './history'
+import Header from './components/Header';
 
 
 
@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       {/* <ActionCableProvider url={API_WS_ROOT}> */}
       <Router history={history}>
-        <Nav/>
+        <Header/><br/><br/><br/>
         <Switch>
           <Route exact path="/" component={Game}/>
           <Route exact path="/rules" component={Rules}/>
