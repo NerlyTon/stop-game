@@ -6,8 +6,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(https://st2.depositphotos.com/3474539/5916/v/600/depositphotos_59169349-stock-illustration-seamless-vector-square-camouflage-pattern.jpg);
-  /* background-color: rgb(63, 82, 45); */
+  /* background-image: url(https://st2.depositphotos.com/3474539/5916/v/600/depositphotos_59169349-stock-illustration-seamless-vector-square-camouflage-pattern.jpg); */
+  background-color: rgb(118, 116, 236);
 }
 
 code {
