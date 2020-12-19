@@ -61,7 +61,9 @@ class Timer extends Component {
                 channel={{ channel: 'PlayersChannel' }}
                 onConnected={this.handleStartTimer}
                 />
-                Timer: {this.state.minutes + ":" + this.state.seconds}<br/>
+                <br/><h3>TIMER:<span className="badge bg-secondary">{this.state.minutes + ":" + this.state.seconds}</span></h3>
+
+                {/* Timer: {this.state.minutes + ":" + this.state.seconds}<br/> */}
                 
                 
             </div>

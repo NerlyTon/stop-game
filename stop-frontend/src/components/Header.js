@@ -1,9 +1,11 @@
 import React from 'react'
+import Nav from './Nav'
 
 export default function Header() {
     return (
         <div>
-            <h1>Word Combat</h1>
+            <Nav/>
+            <h1>WORD COMBAT<span className="badge bg-secondary"></span></h1>
         </div>
     )
 }

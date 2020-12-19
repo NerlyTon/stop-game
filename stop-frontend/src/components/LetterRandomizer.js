@@ -6,6 +6,7 @@ import Scores from './Scores';
 
 
 
+
 class LetterRandomizer extends Component {
     
 
@@ -45,7 +46,8 @@ class LetterRandomizer extends Component {
                 channel={{ channel: 'PlayersChannel' }}
                 onConnected={this.randomLetter}
                 />
-                Letter: {this.state.selectedLetter}<br/>
+                <h2>LETTER:<span className="badge bg-secondary">{this.state.selectedLetter}</span></h2>
+                
                 <PlayerGameForm sendFuntion = {this.randomLetter}/>
             </div>
         )
