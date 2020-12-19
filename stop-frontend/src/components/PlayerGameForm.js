@@ -14,7 +14,8 @@ class PlayerGameForm extends Component {
         place: "",
         color: "",
         animal: "",
-        thing: ""
+        thing: "",
+        score: 0
             }
   
 
@@ -22,7 +23,8 @@ class PlayerGameForm extends Component {
         e.preventDefault();
         this.props.sendFuntion(e)
         // this.props.sendAnotherFunction()
-        this.props.createPlayer(this.state);
+        this.props.createPlayer(this.state)
+        this.setState((prevState) => ({ score: prevState.score + 1 }))
         this.setState({
             initials: "",
             name: "",
@@ -32,6 +34,8 @@ class PlayerGameForm extends Component {
             thing: ""
         });
     };
+
+    
 
     
     
@@ -48,6 +52,8 @@ class PlayerGameForm extends Component {
                     Thing:<input onChange={(e) => this.setState({ thing: e.target.value })} type="text" value={this.state.thing}required/><br/><br/>
                     <input type="submit" value="SUBMIT"/>                  
                 </form>
+                <br/>
+                YOUR SCORE: {this.state.score}
                 
             </div>
         )
