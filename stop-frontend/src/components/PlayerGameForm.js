@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 
 
+
 class PlayerGameForm extends Component {
   
     
@@ -20,6 +21,7 @@ class PlayerGameForm extends Component {
     submit = (e) => {
         e.preventDefault();
         this.props.sendFuntion(e)
+        // this.props.sendAnotherFunction()
         this.props.createPlayer(this.state);
         this.setState({
             initials: "",
@@ -36,16 +38,17 @@ class PlayerGameForm extends Component {
     render() {
         return (
             <div>
-                
+             
                 <form onSubmit={this.submit}>
-                    Player(Initials or Username):<input onChange={(e) => this.setState({ initials: e.target.value })} type="text" value={this.state.initials}/><br/><br/><br/><br/><br/>
-                    Name:<input onChange={(e) => this.setState({ name: e.target.value })} type="text" value={this.state.name}/><br/><br/>
-                    Place:<input onChange={(e) => this.setState({ place: e.target.value })} type="text" value={this.state.place}/><br/><br/>
-                    Color:<input onChange={(e) => this.setState({ color: e.target.value })} type="text" value={this.state.color}/><br/><br/>
-                    Animal:<input onChange={(e) => this.setState({ animal: e.target.value })} type="text" value={this.state.animal}/><br/><br/>
-                    Thing:<input onChange={(e) => this.setState({ thing: e.target.value })} type="text" value={this.state.thing}/><br/><br/>
-                    <input type="submit" value="STOP"/>                  
+                    Player(Initials or Username):<input onChange={(e) => this.setState({ initials: e.target.value })} type="text" value={this.state.initials} required/><br/><br/><br/><br/><br/>
+                    Name:<input onChange={(e) => this.setState({ name: e.target.value })} type="text" value={this.state.name}required/><br/><br/>
+                    Place:<input onChange={(e) => this.setState({ place: e.target.value })} type="text" value={this.state.place}required/><br/><br/>
+                    Color:<input onChange={(e) => this.setState({ color: e.target.value })} type="text" value={this.state.color}required/><br/><br/>
+                    Animal:<input onChange={(e) => this.setState({ animal: e.target.value })} type="text" value={this.state.animal}required/><br/><br/>
+                    Thing:<input onChange={(e) => this.setState({ thing: e.target.value })} type="text" value={this.state.thing}required/><br/><br/>
+                    <input type="submit" value="SUBMIT"/>                  
                 </form>
+                
             </div>
         )
     }
