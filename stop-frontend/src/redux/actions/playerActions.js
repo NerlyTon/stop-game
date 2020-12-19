@@ -15,27 +15,6 @@ export const getPlayer = (playerId) => {
     }
 }
 
-// export const createPlayer = (data) => {
-//   // console.log("inside create action")
-//     return (dispatch) => {
-//         fetch(`http://localhost:3000/players`, {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({ player: data }),
-        
-//       })
-      
-//         .then((res) => res.json())
-//         .then((player) =>
-//           dispatch({ type: "CREATE_PLAYER_SUCCESS", payload: player })
-//         );
-        
-//     };
-    
-
-//   };
 
   export const createPlayer = (data) => {
     return (dispatch) => {
@@ -85,11 +64,6 @@ export const getPlayer = (playerId) => {
     }
   }
 
-  export const setTime = (time) => {
-    return dispatch => {
-      // debugger
-      dispatch({ type: "SET_TIME", payload: time })
-    }
-  }
+ 
 
   

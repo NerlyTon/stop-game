@@ -20,10 +20,7 @@ function playerReducer(state = initialState, action) {
         case "PLAYER_ANS":
             // debugger
             return { ...state, playerAns: [...state.playerAns, action.payload] };
-        
-        case "SET_TIME":
-            // debugger
-            return {...state, time: action.payload}
+    
         default:
             return state;
   

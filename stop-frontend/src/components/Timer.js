@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import LetterRandomizer from './LetterRandomizer';
 import {connect} from 'react-redux'
-import { sendTime, setTime } from '../redux/actions/playerActions'
+import { sendTime } from '../redux/actions/playerActions'
 
 class Timer extends Component {
     
@@ -28,6 +28,7 @@ class Timer extends Component {
                  }
                  if(this.state.minutes === 2){
                     clearInterval(this.intervalID)
+
                  } 
                  this.setState((prevState) => ({ seconds: prevState.seconds + 1 }))
                  
@@ -70,4 +71,4 @@ class Timer extends Component {
 
 
 
-export default connect(null, { sendTime, setTime })(Timer)
+export default connect(null, { sendTime })(Timer)
