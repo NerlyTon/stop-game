@@ -1,12 +1,17 @@
 import { API_ROOT } from '../../constants/index';
 
-export const getPlayers = () => {
+
+export const getPlayer = (playerId) => {
+  console.log(playerId)
+  console.log("inside the getPlayer action")
     return (dispatch) => {
-        fetch(`${API_ROOT}/players`)
+      console.log("inside dispatch")
+        fetch(`${API_ROOT}/players/${playerId}`)
         .then((res) => res.json())
-        .then((players) =>
-        dispatch({ type: "FETCH_PLAYERS-SUCCESS", payload: players })
-        )
+        .then((player) => dispatch({ type: "FETCH_PLAYER_SUCCESS", payload: player }))
+        .catch((error) => console.log(error))
+        
+        
     }
 }
 
@@ -53,15 +58,17 @@ export const getPlayers = () => {
 
   export const deletePlayer = (playerId) => {
     console.log("inside delete action")
+    console.log(playerId)
     return (dispatch) => {
+      console.log(playerId)
       fetch(`http://localhost:3000/players/${playerId}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
-        .then((id) => console.log(id))
+        .then(({id}) => dispatch({ type: "DELETE_PLAYER_SUCCESS", payload: id }))
         .catch((error) => console.log(error))
-        
-    };
+    }   
+    
   }
 
   export const sendTime = (time) => {
@@ -85,4 +92,4 @@ export const getPlayers = () => {
     }
   }
 
-  // dispatch({ type: "DELETE_PLAYER_SUCCESS", payload: id }))
+  
