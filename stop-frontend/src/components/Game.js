@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import { getPlayers, playerAns } from '../redux/actions/playerActions'
+import { playerAns } from '../redux/actions/playerActions'
 import PlayerAnswers from './PlayerAnswers'
 import { ActionCableConsumer } from 'react-actioncable-provider';
 
@@ -23,9 +23,9 @@ class Game extends Component {
       };
 
 
-    componentDidMount() {
-        this.props.getPlayers()
-    }
+    // componentDidMount() {
+    //     this.props.getPlayer()
+    // }
 
     handleReceivedPlayers = (players)=> {
         // debugger
@@ -101,7 +101,7 @@ const mapStateToProps = (players) => {
     }
 }
 
-export default connect(mapStateToProps, { getPlayers, playerAns })(Game)
+export default connect(mapStateToProps, { playerAns })(Game)
 
 
             // e.preventDefault()
