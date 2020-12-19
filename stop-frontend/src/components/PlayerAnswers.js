@@ -12,7 +12,7 @@ class PlayerAnswers extends Component {
 
     render() {
     return (
-        <li> {this.props.player.initials} - {this.props.player.name} - {this.props.player.place} - {this.props.player.color} - {this.props.player.animal} - {this.props.player.thing} - {this.props.info} <button onClick={() => this.props.sendFunc(this.props.player.id)} style={{ cursor: "pointer"}}>Delete</button><button onClick={this.handleClickShow}>Look at Answer</button></li> 
+        <li> {this.props.player.initials} <button onClick={() => this.props.sendFunc(this.props.player.id)} style={{ cursor: "pointer"}}>Delete</button><button onClick={this.handleClickShow}>Look at Answer</button></li> 
   
     )
 }}
