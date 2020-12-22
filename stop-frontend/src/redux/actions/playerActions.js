@@ -35,6 +35,7 @@ export const getPlayer = (playerId) => {
     };
   };
 
+  
   export const deletePlayer = (playerId) => {
     console.log("inside delete action")
     console.log(playerId)

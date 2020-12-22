@@ -62,10 +62,6 @@ class Timer extends Component {
                 onConnected={this.handleStartTimer}
                 />
                 <br/><h3>TIMER:<span className="badge bg-secondary">{this.state.minutes + ":" + this.state.seconds}</span></h3>
-
-                {/* Timer: {this.state.minutes + ":" + this.state.seconds}<br/> */}
-                
-                
             </div>
         )
     }
