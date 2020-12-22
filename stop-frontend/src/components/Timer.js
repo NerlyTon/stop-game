@@ -23,7 +23,7 @@ class Timer extends Component {
         this.intervalID = setInterval(() => {
              this.setState({timerStarted: true, timerStopped: false})
              if(this.state.timerStarted) {
-                 if(this.state.seconds >= 60) {
+                 if(this.state.seconds >= 59) {
                     this.setState((prevState) => ({ minutes: prevState.minutes + 1, seconds: 0}))
                  }
                  if(this.state.minutes === 2){
