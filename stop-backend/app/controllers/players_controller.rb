@@ -17,29 +17,14 @@ class PlayersController < ApplicationController
         # byebug
         if player.save
         # byebug
-
             serialized_data = ActiveModelSerializers::Adapter::Json.new(
             PlayerSerializer.new(player)
             ).serializable_hash
             ActionCable.server.broadcast 'players_channel', serialized_data
-        # #     serialized_data = ActiveModelSerializers::Adapter::Json.new(
-        # #     PlayerSerializer.new(player)).serializable_hash
-        # #     ActionCable.server.broadcast 'players_channel', serialized_data
-        #     head :ok
-        # # byebug
-        render json: serialized_data
+        
+            render json: serialized_data
         end 
-        # byebug
-
-        # if player.save
-        #     render json: player
-        # end
-
-        # serialized_data = ActiveModelSerializers::Adapter::Json.new(
-        #     PlayerSerializer.new(player)
-        # ).serializable_hash
-        # ActionCable.server.broadcast "players_channel", serialized_data
-       
+      
     end 
 
     def destroy
