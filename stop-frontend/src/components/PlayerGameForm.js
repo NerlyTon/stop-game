@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { createPlayer } from '../redux/actions/playerActions'
+import { createPlayer, sendTime } from '../redux/actions/playerActions'
 import { connect } from 'react-redux'
-
-
+import history from '../history';
 
 
 class PlayerGameForm extends Component {
@@ -15,16 +14,16 @@ class PlayerGameForm extends Component {
         color: "",
         animal: "",
         thing: "",
-        score: 0
-            }
+        score: 0,
+        highscore: 0
+    }
   
 
     submit = (e) => {
         e.preventDefault();
         this.props.sendFuntion(e)
-        // this.props.sendAnotherFunction()
         this.props.createPlayer(this.state)
-        this.setState((prevState) => ({ score: prevState.score + 1 }))
+        this.setState((prevState) => ({ score: prevState.score + 5 }))
         this.setState({
             initials: "",
             name: "",
@@ -32,34 +31,62 @@ class PlayerGameForm extends Component {
             color: "",
             animal: "",
             thing: ""
-        });
+        })
     };
 
+  click = (e) => {
+    e.preventDefault();
+    this.props.sendTime({currentTime: null})
+    this.props.sendFuntion(e)
+    history.push('/')
+  }
     
+  handleChange = (e) => {
+    const value = e.target.value
+    this.setState({
+        [e.target.name]: value
+    })
+  }
 
     
     
     render() {
+        let form = <form onSubmit={this.submit}>
+            Player(Initials or Username):<input onChange={this.handleChange} name="initials" type="text" value={this.state.initials} required/><br/><br/><br/><br/><br/>
+            Name:<input onChange={this.handleChange} name="name" type="text" value={this.state.name}required/><br/><br/>
+            Place:<input onChange={this.handleChange} name="place" type="text" value={this.state.place}required/><br/><br/>
+            Color:<input onChange={this.handleChange} name="color" type="text" value={this.state.color}required/><br/><br/>
+            Animal:<input onChange={this.handleChange} name="animal" type="text" value={this.state.animal}required/><br/><br/>
+            Thing:<input onChange={this.handleChange} name="thing" type="text" value={this.state.thing}required/><br/><br/>
+            <input type="submit" value="SUBMIT"/>                  
+        </form>
+        let display;
+        if(this.props.time){
+            if(this.props.time.currentTime === 2) { 
+                display = <button onClick={this.click}>NEW GAME</button>   
+            } else if(this.props.time.currentTime === null) {
+                display = form
+            }
+        } else {
+            display = form 
+        }
+        
         return (
             <div>
-             
-                <form onSubmit={this.submit}>
-                    Player(Initials or Username):<input onChange={(e) => this.setState({ initials: e.target.value })} type="text" value={this.state.initials} required/><br/><br/><br/><br/><br/>
-                    Name:<input onChange={(e) => this.setState({ name: e.target.value })} type="text" value={this.state.name}required/><br/><br/>
-                    Place:<input onChange={(e) => this.setState({ place: e.target.value })} type="text" value={this.state.place}required/><br/><br/>
-                    Color:<input onChange={(e) => this.setState({ color: e.target.value })} type="text" value={this.state.color}required/><br/><br/>
-                    Animal:<input onChange={(e) => this.setState({ animal: e.target.value })} type="text" value={this.state.animal}required/><br/><br/>
-                    Thing:<input onChange={(e) => this.setState({ thing: e.target.value })} type="text" value={this.state.thing}required/><br/><br/>
-                    <input type="submit" value="SUBMIT"/>                  
-                </form>
-                <br/>
+                {display}
+                <br/><br/>
                 YOUR SCORE: {this.state.score}
-                
             </div>
         )
     }
 }
 
+const mapStateToProps = (time) => {
+    console.log("pgf map", time)
+    return {
+        time: time.time
+    }
+}
 
 
-export default connect(null, { createPlayer })(PlayerGameForm)
+export default connect(mapStateToProps, { createPlayer, sendTime})(PlayerGameForm)
