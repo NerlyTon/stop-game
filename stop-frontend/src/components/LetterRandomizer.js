@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import PlayerGameForm from './PlayerGameForm';
 import {connect} from 'react-redux'
-import Scores from './Scores';
+
 
 
 
@@ -26,15 +26,15 @@ class LetterRandomizer extends Component {
 
     }
 
-    display = (string) => {
-        if(string === "hide") {
-           return <Scores/>
-        } 
-        else if (string === "show") {
-            return <PlayerGameForm sendFuntion = {this.randomLetter}/>
-        }
+    // display = (string) => {
+    //     if(string === "hide") {
+    //        return "hi"
+    //     } 
+    //     else if (string === "show") {
+    //         return <PlayerGameForm sendFuntion = {this.randomLetter}/>
+    //     }
         
-    }
+    // }
         
         
    
