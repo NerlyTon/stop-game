@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Router, Route, Switch } from 'react-router-dom'
+import { Router, Route, Switch, Redirect } from 'react-router-dom'
 import Game from './components/Game'
 import Rules from './components/Rules'
 import Answer from './components/Answer';
@@ -20,9 +20,10 @@ function App() {
       <Router history={history}>
         <Header/><br/><br/><br/>
         <Switch>
-          <Route exact path="/" component={Game}/>
-          <Route exact path="/rules" component={Rules}/>
+          <Route exact path="/" component={Rules}/>
+          <Route exact path="/game" component={Game}/>
           <Route path="/answer/:id" component={Answer}/>
+          {/* <Redirect from="/answer/:id" to="/" /> */}
         </Switch>
         <br/><br/><br/><br/><br/><br/><Footer/>
       </Router>

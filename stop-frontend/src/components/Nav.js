@@ -6,8 +6,8 @@ export default function Nav() {
     return (
         <div>
             
-                <Link to='/'>Game</Link><br/>       
-                <Link to='/rules'>Rules</Link>
+                <Link to='/'>Rules</Link><br/>       
+                <Link to='/game'>Game</Link>
             
         </div>
     )
