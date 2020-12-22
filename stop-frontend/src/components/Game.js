@@ -7,6 +7,7 @@ import Timer from './Timer';
 
 
 
+
 class Game extends Component {
     
     state = {
@@ -14,37 +15,35 @@ class Game extends Component {
       };
 
 
-        handleReceivedPlayers = (players)=> {
-        // debugger
-        // console.log("here", players)
-        const player = players.player
-       
-        this.props.playerAns(player)
-        console.log("inside the handle", players)
-        
-       };
+    handleReceivedPlayers = (players)=> {
+    // debugger
+    // console.log("here", players)
+    const player = players.player
+    
+    this.props.playerAns(player)
+    console.log("inside the handle", players)
+    
+    };
 
-    //    infoFromChild = (info) => {
-    //     this.setState({
-    //     currentTime: info.currentTime,
-    //     })
-    //     // debugger
-    //     console.log(this.state.currentTime)
-    //    }
     
     deleteP = (playerId) => {
         console.log("delete")
         this.props.deletePlayer(playerId)
     }
-      
+   
 
 
 
     render() {
-
+        let displayPlayers;
+        if(this.props.playerA) {
+            displayPlayers = this.props.playerA.map((player) => {
+                return <PlayerAnswers player={player} key={player.id} sendFunc={this.deleteP}/>
+            })
+            }
         console.log(this.state, "state")
         console.log(this.props.playerA, "redux")
-        // let playerId = 
+       
         return (
             <div>
                 <ActionCableConsumer
@@ -53,14 +52,7 @@ class Game extends Component {
                 />
                 <Timer/><br/><br/>
                 <h2>Players Answers</h2>
-             
-            
-                {this.props.playerA.map((player) => {
-               return <PlayerAnswers player={player} key={player.id} sendFunc={this.deleteP}/>
-                })}
-                
-                
-                
+                {displayPlayers}
                 
             </div>
         )
