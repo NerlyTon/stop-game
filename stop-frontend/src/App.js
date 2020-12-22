@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import { Router, Route, Switch, Redirect } from 'react-router-dom'
+import { Router, Route, Switch } from 'react-router-dom'
 import Game from './components/Game'
 import Rules from './components/Rules'
 import Answer from './components/Answer';
 import history from './history'
 import Header from './components/Header';
 import Footer from './components/Footer';
-import 'animate.css'
+
 
 
 
