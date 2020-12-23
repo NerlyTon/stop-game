@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { createPlayer, sendTime } from '../redux/actions/playerActions'
+import { createPlayer, sendTime, reset } from '../redux/actions/playerActions'
 import { connect } from 'react-redux'
 import history from '../history';
 
@@ -36,8 +36,9 @@ class PlayerGameForm extends Component {
 
   click = (e) => {
     e.preventDefault();
-    this.props.sendTime({currentTime: null})
-    this.props.randomizeLetter(e)
+    // this.props.sendTime({currentTime: null})
+    // this.props.randomizeLetter(e)
+    this.props.reset()
     history.push('/')
   }
     
@@ -64,9 +65,7 @@ class PlayerGameForm extends Component {
         if(this.props.time){
             if(this.props.time.currentTime === 2) { 
                 display = <button onClick={this.click}>NEW GAME</button>   
-            } else if(this.props.time.currentTime === null) {
-                display = form
-            }
+            } 
         } else {
             display = form 
         }
@@ -89,4 +88,4 @@ const mapStateToProps = (time) => {
 }
 
 
-export default connect(mapStateToProps, { createPlayer, sendTime})(PlayerGameForm)
+export default connect(mapStateToProps, { createPlayer, sendTime, reset})(PlayerGameForm)
