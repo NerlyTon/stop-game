@@ -21,7 +21,7 @@ class PlayerGameForm extends Component {
 
     submit = (e) => {
         e.preventDefault();
-        this.props.sendFuntion(e)
+        this.props.randomizeLetter(e)
         this.props.createPlayer(this.state)
         this.setState((prevState) => ({ score: prevState.score + 5 }))
         this.setState({
@@ -37,7 +37,7 @@ class PlayerGameForm extends Component {
   click = (e) => {
     e.preventDefault();
     this.props.sendTime({currentTime: null})
-    this.props.sendFuntion(e)
+    this.props.randomizeLetter(e)
     history.push('/')
   }
     

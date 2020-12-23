@@ -37,7 +37,7 @@ class LetterRandomizer extends Component {
                 />
                 <h2>LETTER:<span className="badge bg-secondary">{this.state.selectedLetter}</span></h2>
                 
-                <PlayerGameForm sendFuntion = {this.randomLetter}/>
+                <PlayerGameForm randomizeLetter = {this.randomLetter}/>
             </div>
         )
     }
