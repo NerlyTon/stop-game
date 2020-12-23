@@ -47,8 +47,6 @@ class Timer extends Component {
         console.log("stopping timer")
         this.setState({timerStarted: false, timerStopped: true})
         clearInterval(this.intervalID)
-        this.props.fromParent({currentTime: this.state.minutes + ":" + this.state.seconds})
-        this.handleStartTimer()
     }
 
     render() {
