@@ -6,6 +6,7 @@ export const getPlayer = (playerId) => {
   console.log("inside the getPlayer action")
     return (dispatch) => {
       console.log("inside dispatch")
+      dispatch({ type: "LOADING_PLAYER" })
         fetch(`${API_ROOT}/players/${playerId}`)
         .then((res) => res.json())
         .then((player) => dispatch({ type: "FETCH_PLAYER_SUCCESS", payload: player }))
@@ -65,6 +66,12 @@ export const getPlayer = (playerId) => {
     }
   }
 
+
+  export const reset = () => {
+    return dispatch => {
+      dispatch({ type: "RESET"})
+    }
+  }
  
 
   
