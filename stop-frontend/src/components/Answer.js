@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { getPlayer } from '../redux/actions/playerActions'
+import history from '../history';
 
 
 class Answer extends Component {
@@ -10,6 +11,12 @@ class Answer extends Component {
         this.props.getPlayer(this.props.match.params.id)
     }
     
+    handleClick = () => {
+        debugger
+        history.push('/game');
+        
+    }
+
     render() {
     // debugger
 
@@ -17,6 +24,7 @@ class Answer extends Component {
             <div>
                 <h1>Answer</h1>
                 <h2>{this.props.player.initials} - {this.props.player.name} - {this.props.player.place} - {this.props.player.color} - {this.props.player.animal} - {this.props.player.thing}</h2>
+                <button onClick={this.handleClick}>Go Back</button>
             </div>
         )
     }
