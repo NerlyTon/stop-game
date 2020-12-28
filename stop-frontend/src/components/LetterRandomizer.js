@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import PlayerGameForm from './PlayerGameForm';
-import {connect} from 'react-redux'
-
-
 
 
 
@@ -18,7 +15,7 @@ class LetterRandomizer extends Component {
     
 
     randomLetter = () => {
-        
+        // console.log("inside randomletter func in letterR")
         this.setState({
             selectedLetter: this.state.letter[Math.floor(Math.random()*this.state.letter.length)]
             
@@ -29,6 +26,7 @@ class LetterRandomizer extends Component {
 
         
     render() {
+        // console.log("inside render in letterR")
         return (
             <div>
                 <ActionCableConsumer
@@ -43,9 +41,6 @@ class LetterRandomizer extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {time: state.time}
-}
 
-export default connect(mapStateToProps)(LetterRandomizer)
+export default LetterRandomizer
 

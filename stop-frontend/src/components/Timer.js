@@ -19,6 +19,7 @@ class Timer extends Component {
     
 
     handleStartTimer = () => {
+        // console.log("inside handle start timer in timer")
         if(this.state.timerStopped) {
         this.intervalID = setInterval(() => {
              this.setState({timerStarted: true, timerStopped: false})
@@ -39,18 +40,13 @@ class Timer extends Component {
     }
 
     componentWillUnmount = () => {
+        // console.log("inside componentWillUnmount in Timer")
         clearInterval(this.intervalID)
     }
     
-    handleStopTimer = (e) => {
-        e.preventDefault()
-        console.log("stopping timer")
-        this.setState({timerStarted: false, timerStopped: true})
-        clearInterval(this.intervalID)
-    }
 
     render() {
-        
+        // console.log("inside render in Timer")
         return (
             
             <div>
